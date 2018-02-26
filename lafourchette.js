@@ -3,13 +3,13 @@ var cheerio = require('cheerio');
 
 
 function restaurants(nbPage) {
-  var url = "https://restaurant.michelin.fr/restaurants/france/restaurants-1-etoile-michelin/restaurants-2-etoiles-michelin/restaurants-3-etoiles-michelin/page-0"+nbPage;
+  var url = "https://www.lafourchette.com/restaurant+paris#sort=QUALITY_DESC&page="+nbPage;
 
   request(url, function (error, response, html) {
     if (!error && response.statusCode == 200) {
 
       var $ = cheerio.load(html);
-      $(".resultItem-information").find(".resultItem-name").each(function(index, element){
+      $(".resultItem").find(".resultItem-name").each(function(index, element){
         var a = $(element);
         console.log(a.text().trim())
         //count(a);
@@ -19,6 +19,6 @@ function restaurants(nbPage) {
 }
 
 var result;
-for (var i = 1; i <= 2; i++) {
+for (var i = 1; i <= 3; i++) {
   restaurants(i);
 }
