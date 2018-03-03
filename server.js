@@ -5,13 +5,16 @@ var app     = express();
 app.get('/scrape', function(req, res){
     for (var i = 1; i <= 1; i++) {
     	var restoetoile= [];
-        restoetoile = michelin.restaurants(i);
-        //console.log(rest);
-      
-        for (var j; i<= j<= 3; j++){
-        	restoetoile[j];
-        	lafourchette.restaurants2(i,restoetoile);
-        }
+        var b = michelin.restaurants(i);
+        var currentRest = {};
+        currentRest.name = b.text().trim();
+        restoetoile.push(currentRest);
+        console.log("essai");
+        console.log(restoetoile);
+        //console.log(restoetoile[2]);
+
+        	//restoetoile[2];
+        	//lafourchette.restaurants2(i,restoetoile[2]);
 }   
 })
 
